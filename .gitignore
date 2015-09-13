@@ -18,6 +18,15 @@ $RECYCLE.BIN/
 *.lnk
 
 # =========================
+# DEV Files
+# =========================
+target/*
+.idea/*
+.idea/libraries/*
+project/project/target/*
+project/target/*
+
+# =========================
 # Operating System Files
 # =========================
 
