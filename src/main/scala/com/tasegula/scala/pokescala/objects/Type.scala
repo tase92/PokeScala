@@ -22,7 +22,7 @@ case class TypeMini(override val name: String, override val resource_uri: String
 
 trait TypeJson {
   implicit val formatTypeMini = Json.format[TypeMini]
-  implicit val formatType = Json.format[Type]
+  implicit val formatType     = Json.format[Type]
 }
 
 object TypeJson extends TypeJson

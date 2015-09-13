@@ -17,8 +17,8 @@ case class AbilityMini(override val name: String, override val resource_uri: Str
   extends Mini(name, resource_uri)
 
 trait AbilityJson {
+  implicit val formatAbility     = Json.format[Ability]
   implicit val formatAbilityMini = Json.format[AbilityMini]
-  implicit val formatAbility = Json.format[Ability]
 }
 
 object AbilityJson extends AbilityJson

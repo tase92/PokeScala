@@ -43,7 +43,8 @@ object Factory extends PokeClient {
 
   def getFutureByName[T](name: String)(implicit system: ActorSystem, format: Format[T], path: String): Future[T] = {
     import system.dispatcher
-    val response = getFuture(s"$path/$name")
+    val query = name.split("/").head
+    val response = getFuture(s"$path/$query")
     response.map(httpResponse =>
       if (httpResponse.status == StatusCodes.OK) Json.parse(httpResponse.entity.data.asString).as[T]
       else throw new Exception(httpResponse.entity.data.asString))

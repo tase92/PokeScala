@@ -17,9 +17,10 @@ case class EggGroupMini(override val name: String, override val resource_uri: St
   extends Mini(name, resource_uri)
 
 trait EggGroupJson {
+
   import PokemonJson._
 
-  implicit val formatEggGroup = Json.format[EggGroup]
+  implicit val formatEggGroup     = Json.format[EggGroup]
   implicit val formatEggGroupMini = Json.format[EggGroupMini]
 }
 

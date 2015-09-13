@@ -18,8 +18,8 @@ case class GameMini(override val name: String, override val resource_uri: String
   extends Mini(name, resource_uri)
 
 trait GameJson {
+  implicit val formatGame     = Json.format[Game]
   implicit val formatGameMini = Json.format[GameMini]
-  implicit val formatGame = Json.format[Game]
 }
 
 object GameJson extends GameJson

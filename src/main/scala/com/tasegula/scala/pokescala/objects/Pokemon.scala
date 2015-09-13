@@ -5,7 +5,6 @@
  */
 package com.tasegula.scala.pokescala.objects
 
-import akka.actor.ActorSystem
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
 

@@ -19,8 +19,11 @@ case class DescriptionMini(override val name: String, override val resource_uri:
 
 trait DescriptionJson {
 
+  import PokemonJson.formatPokemonMini
+  import GameJson.formatGameMini
+
+  implicit val formatDescription     = Json.format[Description]
   implicit val formatDescriptionMini = Json.format[DescriptionMini]
-  implicit val formatDescription = Json.format[Description]
 }
 
 object DescriptionJson extends DescriptionJson

@@ -6,7 +6,7 @@ package com.tasegula.scala.pokescala
 
 import akka.actor.ActorSystem
 import com.tasegula.scala.pokescala.client.PokeClient
-import com.tasegula.scala.pokescala.factories.PokemonFactory
+import com.tasegula.scala.pokescala.factories.{AbilityFactory, PokemonFactory}
 
 import scala.util.{Failure, Success}
 
@@ -21,6 +21,9 @@ object Main
 
   val p2 = PokemonFactory.getPokemon(1)
   println(p2)
+
+  val ability = AbilityFactory.getAbility(p2.abilities.head.resource_uri)
+  println(ability)
 
   val p = PokemonFactory.getPokemonFuture(0)
   p onComplete {
