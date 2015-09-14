@@ -14,9 +14,12 @@ object PokemonFactory {
   type T = Pokemon
   implicit val path: String = "pokemon"
 
-  def getPokemonFuture(id: Int)(implicit system: ActorSystem) = getFutureById[T](id)
+  def getPokemonFuture(id: Int)(implicit system: ActorSystem)      = getFutureById[T](id)
   def getPokemonFuture(name: String)(implicit system: ActorSystem) = getFutureByName[T](name)
 
-  def getPokemon(id: Int)(implicit system: ActorSystem) = getById[T](id)
-  def getPokemon(name: String)(implicit system: ActorSystem) = getByName[T](name)
+  def getPokemonOption(id: Int)(implicit system: ActorSystem)      = getOptionById[T](id)
+  def getPokemonOption(name: String)(implicit system: ActorSystem) = getOptionByName[T](name)
+
+  def getPokemonResponse(id: Int)(implicit system: ActorSystem)      = getResponseById[T](id)
+  def getPokemonResponse(name: String)(implicit system: ActorSystem) = getResponseByName[T](name)
 }

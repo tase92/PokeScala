@@ -14,9 +14,12 @@ object GameFactory {
   type T = Game
   implicit val path: String = "game"
 
-  def getGameFuture(id: Int)(implicit system: ActorSystem) = getFutureById[T](id)
+  def getGameFuture(id: Int)(implicit system: ActorSystem)      = getFutureById[T](id)
   def getGameFuture(name: String)(implicit system: ActorSystem) = getFutureByName[T](name)
 
-  def getGame(id: Int)(implicit system: ActorSystem) = getById[T](id)
-  def getGame(name: String)(implicit system: ActorSystem) = getByName[T](name)
+  def getGameOption(id: Int)(implicit system: ActorSystem)      = getOptionById[T](id)
+  def getGameOption(name: String)(implicit system: ActorSystem) = getOptionByName[T](name)
+
+  def getGameResponse(id: Int)(implicit system: ActorSystem)      = getResponseById[T](id)
+  def getGameResponse(name: String)(implicit system: ActorSystem) = getResponseByName[T](name)
 }

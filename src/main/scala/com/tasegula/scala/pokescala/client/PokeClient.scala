@@ -5,7 +5,6 @@
 package com.tasegula.scala.pokescala.client
 
 import akka.actor.ActorSystem
-import akka.event.Logging
 import akka.io.IO
 import akka.pattern.ask
 import akka.util.Timeout
@@ -13,22 +12,18 @@ import spray.can.Http
 import spray.http.HttpMethods._
 import spray.http._
 
-import scala.concurrent.duration._
+import com.tasegula.scala.pokescala._
+
 import scala.concurrent.{Await, Future}
 
 trait PokeClient {
-  private implicit val timeout: Timeout = 5.seconds
 
   private val host = "http://pokeapi.co/api/v1"
 
-  protected def get(path: String)(implicit system: ActorSystem): HttpResponse = {
-    Await.result(getFuture(path), timeout.duration)
-  }
+  implicit val _timeout: Timeout = timeout
 
-  protected def getFuture(path: String)(implicit system: ActorSystem): Future[HttpResponse] = {
+  protected def getFutureFullPath(path: String)(implicit system: ActorSystem): Future[HttpResponse] = {
     import system.dispatcher
-    // execution context for future transformation below
-    val log = Logging(system, getClass)
 
     // construct the request
     val request = HttpRequest(GET, Uri(s"$host/$path/"))
@@ -41,5 +36,9 @@ trait PokeClient {
       println(s"RESPONSE: $response")
       response
     }
+  }
+
+  protected def getFuture(path: String)(resource: String)(implicit system: ActorSystem): Future[HttpResponse] = {
+    getFutureFullPath(s"$path/${resource.split("/").last}")
   }
 }

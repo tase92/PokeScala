@@ -14,9 +14,12 @@ object EggGroupFactory {
   type T = EggGroup
   implicit val path: String = "egg"
 
-  def getEggGroupFuture(id: Int)(implicit system: ActorSystem) = getFutureById[T](id)
+  def getEggGroupFuture(id: Int)(implicit system: ActorSystem)      = getFutureById[T](id)
   def getEggGroupFuture(name: String)(implicit system: ActorSystem) = getFutureByName[T](name)
 
-  def getEggGroup(id: Int)(implicit system: ActorSystem) = getById[T](id)
-  def getEggGroup(name: String)(implicit system: ActorSystem) = getByName[T](name)
+  def getEggGroupOption(id: Int)(implicit system: ActorSystem)      = getOptionById[T](id)
+  def getEggGroupOption(name: String)(implicit system: ActorSystem) = getOptionByName[T](name)
+
+  def getEggGroupResponse(id: Int)(implicit system: ActorSystem)      = getResponseById[T](id)
+  def getEggGroupResponse(name: String)(implicit system: ActorSystem) = getResponseByName[T](name)
 }

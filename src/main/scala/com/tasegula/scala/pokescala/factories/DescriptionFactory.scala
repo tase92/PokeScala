@@ -14,9 +14,12 @@ object DescriptionFactory {
   type T = Description
   implicit val path: String = "description"
 
-  def getDescriptionFuture(id: Int)(implicit system: ActorSystem) = getFutureById[T](id)
+  def getDescriptionFuture(id: Int)(implicit system: ActorSystem)      = getFutureById[T](id)
   def getDescriptionFuture(name: String)(implicit system: ActorSystem) = getFutureByName[T](name)
 
-  def getDescription(id: Int)(implicit system: ActorSystem) = getById[T](id)
-  def getDescription(name: String)(implicit system: ActorSystem) = getByName[T](name)
+  def getDescriptionOption(id: Int)(implicit system: ActorSystem)      = getOptionById[T](id)
+  def getDescriptionOption(name: String)(implicit system: ActorSystem) = getOptionByName[T](name)
+
+  def getDescriptionResponse(id: Int)(implicit system: ActorSystem)      = getResponseById[T](id)
+  def getDescriptionResponse(name: String)(implicit system: ActorSystem) = getResponseByName[T](name)
 }

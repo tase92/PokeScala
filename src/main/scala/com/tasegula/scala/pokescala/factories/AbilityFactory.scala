@@ -14,9 +14,12 @@ object AbilityFactory {
   type T = Ability
   implicit val path: String = "ability"
 
-  def getAbilityFuture(id: Int)(implicit system: ActorSystem) = getFutureById[T](id)
+  def getAbilityFuture(id: Int)(implicit system: ActorSystem)      = getFutureById[T](id)
   def getAbilityFuture(name: String)(implicit system: ActorSystem) = getFutureByName[T](name)
 
-  def getAbility(id: Int)(implicit system: ActorSystem) = getById[T](id)
-  def getAbility(name: String)(implicit system: ActorSystem) = getByName[T](name)
+  def getAbilityOption(id: Int)(implicit system: ActorSystem)      = getOptionById[T](id)
+  def getAbilityOption(name: String)(implicit system: ActorSystem) = getOptionByName[T](name)
+
+  def getAbilityResponse(id: Int)(implicit system: ActorSystem)      = getResponseById[T](id)
+  def getAbilityResponse(name: String)(implicit system: ActorSystem) = getResponseByName[T](name)
 }

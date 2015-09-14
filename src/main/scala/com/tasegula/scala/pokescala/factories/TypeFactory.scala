@@ -14,9 +14,12 @@ object TypeFactory {
   type T = Type
   implicit val path: String = "type"
 
-  def getTypeFuture(id: Int)(implicit system: ActorSystem) = getFutureById[T](id)
+  def getTypeFuture(id: Int)(implicit system: ActorSystem)      = getFutureById[T](id)
   def getTypeFuture(name: String)(implicit system: ActorSystem) = getFutureByName[T](name)
 
-  def getType(id: Int)(implicit system: ActorSystem) = getById[T](id)
-  def getType(name: String)(implicit system: ActorSystem) = getByName[T](name)
+  def getTypeOption(id: Int)(implicit system: ActorSystem)      = getOptionById[T](id)
+  def getTypeOption(name: String)(implicit system: ActorSystem) = getOptionByName[T](name)
+
+  def getTypeResponse(id: Int)(implicit system: ActorSystem)      = getResponseById[T](id)
+  def getTypeResponse(name: String)(implicit system: ActorSystem) = getResponseByName[T](name)
 }

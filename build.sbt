@@ -14,12 +14,11 @@ libraryDependencies ++= {
     "io.spray"            %%  "spray-can"     % sprayV withSources() withJavadoc(),
     "io.spray"            %%  "spray-routing" % sprayV withSources() withJavadoc(),
     "io.spray"            %%  "spray-json"    % "1.3.1",
-    "io.spray"            %%  "spray-testkit" % sprayV  % "test",
     "com.typesafe.akka"   %%  "akka-actor"    % akkaV,
-    "com.typesafe.akka"   %%  "akka-testkit"  % akkaV   % "test",
-    "org.specs2"          %%  "specs2-core"   % "2.3.11" % "test",
     "org.scalaz"          %%  "scalaz-core"   % "7.1.0",
-    "com.typesafe.play"   %%  "play-json"     % "2.4.0-M3"
+    "com.typesafe.play"   %%  "play-json"     % "2.4.0-M3",
+    "com.typesafe.akka"   %%  "akka-testkit"  % akkaV   % "test",
+    "org.scalatest"       %%  "scalatest"     % "2.2.4" % "test"
   )
 }
     
